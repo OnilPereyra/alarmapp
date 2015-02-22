@@ -2,15 +2,12 @@
 
 Alarm triggered via accelerometer (Tessel 1) causes a photo to be taken (Tessel 2). Alarm + photo are displayed in a HTML5 client, which also allows arming, disarming and canceling the alarm.
 
-Put together during the Microsoft IoT Hackaton in Berlin; 13.11.2014.
 
-[Video](http://www.youtube.com/watch?v=WY7KzrRm8XY) of this in action (with some Crossbar.io/WAMP background) (2 minutes 50 seconds).
-
-Note: 
+Note:
    * Taking the picture on the Tessel takes about 2.4s at a very low resolution.
    * Encoding this for sending over WAMP is another ~1.3s.
    * The Tessel's wi-fi is also slow.
-   * So don't expect a snappy response with the image. (Any hints about optimization are highly welcome!)
+   * So don't expect a snappy response with the image. 
 
 ## Hardware requirements
 
@@ -23,16 +20,16 @@ The demo backend runs on Node.js, and the Tessel uses the node package manager `
 To install the required Node packages, you initially need to do
 
 ```
-npm install 
+npm install
 ```
 
 in the demo directory.
 
-Then start Crossbar.io from the demo directory by doing 
+Then start Crossbar.io from the demo directory by doing
 
 ```
 crossbar start
-``` 
+```
 
 Crossbar also serves the HTML5 frontend under `http://localhost:8080`.
 
@@ -63,8 +60,8 @@ Since the Tessel WS/WAMP libraries do not send the proper WebSocket subprotocol 
 ```
 "type": "websocket",
 "options": {
-   "require_websocket_subprotocol": false   
-} 
+   "require_websocket_subprotocol": false
+}
 ```
 
 Since the Tessel has problems with WebSocket pings, do not set `auto_ping_interval` to anything but the default `0`.
